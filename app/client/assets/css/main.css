@@ -59,7 +59,8 @@ h6 {
   object-fit:contain;
   object-fit:none;
   object-fit:scale-down;
-  
+  width: 1000;
+  height: 200;
 }
 /*--------------------------------------------------------------
 # Sections & Section Header
@@ -362,7 +363,7 @@ section {
     justify-content: space-between;
     padding: 0 3px;
     font-family: var(--font-secondary);
-    font-size: 16px;
+    font-size: 20px;
 <<<<<<< HEAD
     font-weight: 1000;
     color: #7f7f90;
@@ -377,7 +378,7 @@ section {
 
   .navbar a i,
   .navbar a:focus i {
-    font-size: 5px;
+    font-size: 15px;
     line-height: 0;
     margin-left: 5px;
   }
@@ -518,7 +519,7 @@ section {
     padding: 10px 20px;
     font-family: var(--font-secondary);
     border-bottom: 2px solid rgba(255, 255, 255, 0.8);
-    font-size: 16px;
+    font-size: 20px;
     font-weight: 600;
     color: white;
     white-space: nowrap;
@@ -1533,7 +1534,7 @@ section {
 }
 
 .hero h2 {
-  font-size: 64px;
+  font-size: 54px;
   font-weight: 300;
   margin-bottom: 20px;
   color: var(--color-secondary);
