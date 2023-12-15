@@ -1,21 +1,21 @@
-/*--------------------------------------------------------------
-# Set main reusable colors and fonts using CSS variables
-# Learn more about CSS variables at https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties
---------------------------------------------------------------*/
-/* Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Afacad:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Afacad:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Paytone+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Philosopher&display=swap");
 :root {
-  --font-default: "Ubuntu", system-ui, -apple-system, "Segoe UI", Roboto,
-    "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --font-primary: "Ubuntu", sans-serif;
-  --font-secondary: "Ubuntu", sans-serif;
+  --font-default: "Afacad", sans-serif;
+  --font-primary: "Philosopher", sans-serif;
+  --font-secondary: "Afacad", sans-serif;
 }
 
 /* Colors */
 :root {
-  --color-default: #212529;
+  --color-default: #fdbda0;
+  --color-title: #89251b;
+  --color-orange: #fa8d40;
+  --color-white: #feeedf;
+  --color-red: #dc392f;
   --color-primary: #ce1212;
-  --color-secondary: #37373f;
+  --color-secondary: #fa8d40;
 }
 
 /* Smooth scroll behavior */
@@ -32,7 +32,6 @@ body {
 }
 
 a {
-  color: var(--color-primary);
   text-decoration: none;
 }
 
@@ -68,12 +67,11 @@ section {
 }
 
 .section-header h2 {
-  font-size: 13px;
-  letter-spacing: 1px;
-  font-weight: 400;
+  font-size: 10px;
+  letter-spacing: 5px;
   margin: 0;
   padding: 0;
-  color: #7f7f90;
+  color: #ffffff;
   text-transform: uppercase;
   font-family: var(--font-default);
 }
@@ -126,7 +124,7 @@ section {
 .breadcrumbs ol li + li::before {
   display: inline-block;
   padding-right: 10px;
-  color: #676775;
+  color: #ffffff;
   content: "/";
 }
 
@@ -189,7 +187,7 @@ section {
   inset: 0;
   z-index: 9999;
   overflow: hidden;
-  background: #ff3434;
+  background: var(--color-primary);
   transition: all 0.6s ease-out;
   width: 100%;
   display: flex;
@@ -258,11 +256,14 @@ section {
 # Header
 --------------------------------------------------------------*/
 .header {
-  background: #fff;
+  & a {
+    color: white;
+  }
+  background: var(--color-primary);
   transition: all 0.5s;
   z-index: 997;
   height: 90px;
-  border-bottom: 1px solid #fff;
+  border-bottom: 1px solid var(--color-title);
 }
 
 @media (max-width: 575px) {
@@ -272,8 +273,8 @@ section {
 }
 
 .header.sticked {
-  border-color: #fff;
-  border-color: #eee;
+  border-color: var(--color-title);
+  border-color: var(--color-title);
 }
 
 .header .logo img {
@@ -284,7 +285,7 @@ section {
 .header .logo h1 {
   font-size: 28px;
   font-weight: 700;
-  color: #000;
+  color: var(--color-orange);
   margin: 0;
   font-family: var(--font-secondary);
 }
@@ -296,6 +297,8 @@ section {
 .header .btn-book-a-table,
 .header .btn-book-a-table:focus {
   font-size: 14px;
+  display: flex;
+  gap: 14px;
   color: #fff;
   background: var(--color-primary);
   padding: 8px 20px;
@@ -348,7 +351,7 @@ section {
     font-family: var(--font-secondary);
     font-size: 16px;
     font-weight: 600;
-    color: #7f7f90;
+    color: white;
     white-space: nowrap;
     transition: 0.3s;
     position: relative;
@@ -385,7 +388,7 @@ section {
   .navbar .active,
   .navbar .active:focus,
   .navbar li:hover > a {
-    color: #000;
+    color: var(--color-orange);
   }
 
   .navbar .dropdown ul {
@@ -499,7 +502,7 @@ section {
     border-bottom: 2px solid rgba(255, 255, 255, 0.8);
     font-size: 16px;
     font-weight: 600;
-    color: #7f7f90;
+    color: white;
     white-space: nowrap;
     transition: 0.3s;
   }
@@ -513,12 +516,12 @@ section {
 
   .navbar a:hover,
   .navbar li:hover > a {
-    color: #000;
+    color: #ffffff;
   }
 
   .navbar .active,
   .navbar .active:focus {
-    color: #000;
+    color: var(--color-orange);
     border-color: var(--color-primary);
   }
 
@@ -787,7 +790,7 @@ section {
 
 .why-us .icon-box p {
   font-size: 15px;
-  color: #6c757d;
+  color: var(--color-orange);
 }
 
 @media (min-width: 1200px) {
@@ -893,7 +896,7 @@ section {
 .menu .tab-content .tab-header p {
   font-size: 14px;
   text-transform: uppercase;
-  color: #676775;
+  color: var(--color-orange);
   margin-bottom: 0;
 }
 
@@ -924,7 +927,7 @@ section {
 
 .menu .tab-content .menu-item .ingredients {
   font-family: var(--font-secondary);
-  color: #8d8d9b;
+  color: var(--color-secondary);
   margin-bottom: 5px;
 }
 
@@ -1172,7 +1175,7 @@ section {
   font-size: 14px;
   padding-top: 15px;
   line-height: 26px;
-  color: rgba(33, 37, 41, 0.7);
+  color: rgb(182, 218, 255);
 }
 
 .chefs .chef-member:hover {
@@ -1502,6 +1505,7 @@ section {
 # Hero Section
 --------------------------------------------------------------*/
 .hero {
+  background-color: var(--color-title);
   width: 100%;
   background-size: cover;
   position: relative;
@@ -1511,7 +1515,7 @@ section {
 
 .hero h2 {
   font-size: 64px;
-  font-weight: 700;
+  font-weight: 300;
   margin-bottom: 20px;
   color: var(--color-secondary);
   font-family: var(--font-primary);
@@ -1522,7 +1526,8 @@ section {
 }
 
 .hero p {
-  color: #4f4f5a;
+  font-size: 20px;
+  color: var(--color-default);
   font-weight: 400;
   margin-bottom: 30px;
 }
@@ -1580,7 +1585,6 @@ section {
   }
 }
 #navbar {
-  background-color: red;
   color: white !important;
 }
 /*--------------------------------------------------------------
