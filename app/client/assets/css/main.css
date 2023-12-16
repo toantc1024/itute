@@ -59,8 +59,9 @@ h6 {
   object-fit:contain;
   object-fit:none;
   object-fit:scale-down;
-  width: 1000;
-  height: 200;
+  width: auto;
+  height: 40px;
+  max-height: 10px;
 }
 /*--------------------------------------------------------------
 # Sections & Section Header

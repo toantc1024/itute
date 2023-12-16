@@ -1,2 +1,0 @@
-change .navbar a:focus i {font-size: 15px }
-change .navbar a:focus {font-size: 20px}
