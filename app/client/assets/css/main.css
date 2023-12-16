@@ -369,7 +369,7 @@ section {
   .navbar a:focus i {
     font-size: 15px;
     line-height: 0;
-    margin-left: 5px;
+    margin-left: 2px;
   }
 
   .navbar > ul > li > a:before {
@@ -588,7 +588,7 @@ section {
 }
 
 /*--------------------------------------------------------------
-# About Section
+# Gioi Thieu Section
 --------------------------------------------------------------*/
 .about .about-img {
   min-height: 500px;
@@ -1030,7 +1030,7 @@ section {
 }
 
 /*--------------------------------------------------------------
-# Events Section
+# XuanTinhNguyen Section
 --------------------------------------------------------------*/
 .events .container-fluid {
   padding: 0;
@@ -1104,7 +1104,7 @@ section {
 }
 
 /*--------------------------------------------------------------
-# Chefs Section
+# BanGayQuy Section
 --------------------------------------------------------------*/
 .chefs .chef-member {
   overflow: hidden;
@@ -1324,7 +1324,7 @@ section {
 }
 
 /*--------------------------------------------------------------
-# Gallery Section
+# HinhAnh Section
 --------------------------------------------------------------*/
 .gallery {
   overflow: hidden;
@@ -1365,7 +1365,7 @@ section {
 }
 
 /*--------------------------------------------------------------
-# Contact Section
+# LienHe Section
 --------------------------------------------------------------*/
 .contact .info-item {
   background: #f4f4f4;
