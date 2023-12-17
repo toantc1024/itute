@@ -353,9 +353,9 @@ section {
     justify-content: space-between;
     padding: 0 3px;
     font-family: var(--font-secondary);
-    font-size: 20px;
+    font-size: 1rem;
     font-weight: 1000;
-    color: #7f7f90;
+    color: white;
     white-space: nowrap;
     transition: 0.3s;
     position: relative;
