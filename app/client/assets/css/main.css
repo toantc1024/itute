@@ -53,14 +53,14 @@ h6 {
 # Logo Doan Hoi
 --------------------------------------------------------------*/
 .image-DoanHoi{
-  float: flex;
+  float: left;
   display: flex;
   object-fit:fill;
   object-fit:contain;
   object-fit:none;
   object-fit:scale-down;
   width: auto;
-  height: 40px;
+  height: 80px;
   max-height: 10px;
 }
 /*--------------------------------------------------------------
@@ -353,7 +353,7 @@ section {
     justify-content: space-between;
     padding: 0 3px;
     font-family: var(--font-secondary);
-    font-size: 1rem;
+    font-size: 1.3rem;
     font-weight: 1000;
     color: white;
     white-space: nowrap;
