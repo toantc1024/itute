@@ -354,13 +354,8 @@ section {
     padding: 0 3px;
     font-family: var(--font-secondary);
     font-size: 20px;
-<<<<<<< HEAD
     font-weight: 1000;
     color: #7f7f90;
-=======
-    font-weight: 600;
-    color: white;
->>>>>>> main
     white-space: nowrap;
     transition: 0.3s;
     position: relative;
