@@ -53,14 +53,19 @@ h6 {
 # Logo Doan Hoi
 --------------------------------------------------------------*/
 .image-DoanHoi{
-  float: flex;
+  float: left;
   display: flex;
   object-fit:fill;
   object-fit:contain;
+  background-color: rgba(255,255,255,.1);
+  border: 1px solid rgba(255,255,255,.05);
+  padding: 5px 10px;
+  border-radius: 10rem;
   object-fit:none;
   object-fit:scale-down;
-  width: 1000;
-  height: 200;
+  width: auto;
+  height: 3.5rem;
+  max-height: 10px;
 }
 /*--------------------------------------------------------------
 # Sections & Section Header
@@ -69,11 +74,9 @@ section {
   overflow: hidden;
   padding: 80px 0;
 }
-
 .section-bg {
-  background-color: #eee;
+  background-color: var(--color-primary);
 }
-
 .section-header {
   text-align: center;
   padding-bottom: 30px;
@@ -84,7 +87,7 @@ section {
   letter-spacing: 1px;
   margin: 0;
   padding: 0;
-  color: #7f7f90;
+  color: var(--color-secondary);
   text-transform: uppercase;
   font-family: var(--font-default);
 }
@@ -257,10 +260,13 @@ section {
 /*--------------------------------------------------------------
 # Header
 --------------------------------------------------------------*/
+.header a{ 
+  color: white;
+}
+
 .header {
-  & a {
-    color: white;
-  }
+  display: flex;
+  align-items: center;
   background: var(--color-primary);
   transition: all 0.5s;
   z-index: 997;
@@ -271,6 +277,17 @@ section {
 @media (max-width: 575px) {
   .header {
     height: 70px;
+  }
+  .image-DoanHoi{
+    float: left;
+    display: flex;
+    object-fit:fill;
+    object-fit:contain;
+    object-fit:none;
+    object-fit:scale-down;
+    width: auto;
+    height: 30px;
+    max-height: 10px;
   }
 }
 
@@ -299,11 +316,15 @@ section {
 .header .btn-book-a-table,
 .header .btn-book-a-table:focus {
   font-size: 14px;
+  color: var(--color-default);
+  font-weight: 700;
+  font-size: 14px;
   display: flex;
+  align-items: center;
+  justify-content: center;
   gap: 14px;
   color: #fff;
-  background: var(--color-primary);
-  padding: 8px 20px;
+  padding: 8px 8px;
   margin-left: 30px;
   border-radius: 50px;
   transition: 0.3s;
@@ -352,14 +373,9 @@ section {
     justify-content: space-between;
     padding: 0 3px;
     font-family: var(--font-secondary);
-    font-size: 20px;
-<<<<<<< HEAD
+    font-size: 1rem;
     font-weight: 1000;
-    color: #7f7f90;
-=======
-    font-weight: 600;
     color: white;
->>>>>>> main
     white-space: nowrap;
     transition: 0.3s;
     position: relative;
@@ -369,7 +385,7 @@ section {
   .navbar a:focus i {
     font-size: 15px;
     line-height: 0;
-    margin-left: 5px;
+    margin-left: 2px;
   }
 
   .navbar > ul > li > a:before {
@@ -588,7 +604,7 @@ section {
 }
 
 /*--------------------------------------------------------------
-# About Section
+# Gioi Thieu Section
 --------------------------------------------------------------*/
 .about .about-img {
   min-height: 500px;
@@ -1030,7 +1046,7 @@ section {
 }
 
 /*--------------------------------------------------------------
-# Events Section
+# XuanTinhNguyen Section
 --------------------------------------------------------------*/
 .events .container-fluid {
   padding: 0;
@@ -1104,13 +1120,13 @@ section {
 }
 
 /*--------------------------------------------------------------
-# Chefs Section
+# BanGayQuy Section
 --------------------------------------------------------------*/
 .chefs .chef-member {
   overflow: hidden;
   text-align: center;
   border-radius: 5px;
-  background: #fff;
+  background: var(--color-title);
   box-shadow: 0px 0 30px rgba(55, 55, 63, 0.08);
   transition: 0.3s;
 }
@@ -1161,6 +1177,10 @@ section {
 }
 
 .chefs .chef-member .member-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-self: center;
   padding: 10px 15px 20px 15px;
 }
 
@@ -1174,16 +1194,22 @@ section {
 .chefs .chef-member .member-info span {
   display: block;
   font-size: 14px;
-  font-weight: 400;
-  color: rgba(33, 37, 41, 0.4);
+  font-weight: bold;
+  color: var(--color-white);
 }
 
 .chefs .chef-member .member-info p {
   font-style: italic;
-  font-size: 14px;
-  padding-top: 15px;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 15px 20px;
   line-height: 26px;
-  color: rgb(182, 218, 255);
+  margin-top: 20px;
+  border-radius: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--color-orange);
 }
 
 .chefs .chef-member:hover {
@@ -1324,7 +1350,7 @@ section {
 }
 
 /*--------------------------------------------------------------
-# Gallery Section
+# HinhAnh Section
 --------------------------------------------------------------*/
 .gallery {
   overflow: hidden;
@@ -1365,7 +1391,7 @@ section {
 }
 
 /*--------------------------------------------------------------
-# Contact Section
+# LienHe Section
 --------------------------------------------------------------*/
 .contact .info-item {
   background: #f4f4f4;
@@ -1541,13 +1567,23 @@ section {
   margin-bottom: 30px;
 }
 
+.bi-cart-icon {
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .hero .btn-book-a-table {
   font-weight: 500;
   font-size: 14px;
   letter-spacing: 1px;
-  display: inline-block;
   padding: 12px 36px;
   border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   transition: 0.5s;
   color: #fff;
   background: var(--color-primary);
