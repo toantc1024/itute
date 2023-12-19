@@ -1567,13 +1567,23 @@ section {
   margin-bottom: 30px;
 }
 
+.bi-cart-icon {
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .hero .btn-book-a-table {
   font-weight: 500;
   font-size: 14px;
   letter-spacing: 1px;
-  display: inline-block;
   padding: 12px 36px;
   border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   transition: 0.5s;
   color: #fff;
   background: var(--color-primary);
