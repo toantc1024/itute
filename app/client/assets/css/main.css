@@ -1571,6 +1571,14 @@ section {
 /*--------------------------------------------------------------
 # Hero Section
 --------------------------------------------------------------*/
+#hero {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("../img/bg.png") center center;
+  background-size: cover;
+  padding: 100px 0;
+}
+
+
 .hero {
   background-color: var(--color-title);
   width: 100%;
