@@ -47,7 +47,7 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"
     />
-
+    
 
     <link href="assets/vendor/aos/aos.css" rel="stylesheet" />
     <link
@@ -80,12 +80,12 @@
             <li><a href="#menu">Menu</a></li>
             <li><a href="#events">Xuân Tình Nguyện</a></li>
             <li><a href="#chefs">Ban Gây Quỹ</a></li>
-            <li><a href="#gallery">Thử thách</a></li>
+            <!-- <li><a href="#gallery">Thử thách</a></li> -->
             <li><a href="#contact">Liên hệ</a></li>
 
-            <a class="btn-book-a-table" href="#book-a-table"
+            <button class="btn-book-a-table" id="cart-button"
               ><i class="bi bi-cart"></i
-            ></a>
+            ></button>
           </ul>
         </nav>
         <!-- .navbar -->
@@ -112,7 +112,7 @@
               Chiến dịch tình nguyện 2024
             </p>
             <div class="d-flex" data-aos="fade-up" data-aos-delay="200">
-              <a href="#book-a-table" class="btn-book-a-table">
+              <a class="price btn-book-a-table">
                   <div class="bi-cart-icon">
 
                     <i class="bi bi-cart"></i>
@@ -120,7 +120,7 @@
                 <div>Đặt hàng ngay</div></a
               >
               <a
-                href="https://www.youtube.com/watch?v=LXb3EKWsInQ"
+                href="https://www.youtube.com/watch?v=3jBspF01wLE"
                 class="glightbox btn-watch-video d-flex align-items-center"
                 ><i class="bi bi-play-circle"></i
                 ><span>Giới thiệu chiến dịch</span></a
@@ -129,10 +129,10 @@
           </div>
           <div class="col-lg-5 order-1 order-lg-2 text-center text-lg-start">
             <img
-              src="assets/img/Menu.png"
+              src="assets/img/dragon.png"
               class="img-fluid"
-              alt=""
-              data-aos="zoom-out"
+              alt="🐉"
+              data-aos="zoom-up"
               data-aos-delay="300"
             />
           </div>
@@ -140,35 +140,22 @@
       </div>
     </section>
     <!-- End Hero Section -->
-
     <main id="main">
-      <!-- ======= About Section ======= -->
+
       <section id="about" class="about">
         <div class="container" data-aos="fade-up">
-          <div class="section-header">
             <h2>Giới thiệu</h2>
-            <p>Toàn Bộ Hành Trình <span>Xuân Tình Nguyện 2024</span></p>
-          </div>
+          <p class="about-description">Đây là trang web gây quỹ của diến dịch <span>Xuân Tình Nguyện 2024</span></p>
 
-          <div class="row gy-4 d-flex justify-content-between">
-            <div>Viết content ở đây</div>
-            <div class="position-relative mt-4">
-              <img src="assets/img/about-2.jpg" class="img-fluid" alt="" />
-              <a
-                href="https://www.youtube.com/watch?v=LXb3EKWsInQ"
-                class="glightbox play-btn"
-              ></a>
-            </div>
-          </div>
         </div>
       </section>
-      <!-- End About Section -->
 
 
       <!-- ======= Stats Counter Section ======= -->
       <section id="stats-counter" class="stats-counter">
         <div class="container" data-aos="zoom-out">
-          <div class="row gy-4">
+          <!-- <div>Lan tỏa nét đẹp tết văn minh</div> -->
+          <!-- <div class="row gy-4">
             <div class="col-lg-3 col-md-6">
               <div class="stats-item text-center w-100 h-100">
                 <span
@@ -180,7 +167,6 @@
                 <p>Dự án</p>
               </div>
             </div>
-            <!-- End Stats Item -->
 
             <div class="col-lg-3 col-md-6">
               <div class="stats-item text-center w-100 h-100">
@@ -193,7 +179,6 @@
                 <p>Tỉnh</p>
               </div>
             </div>
-            <!-- End Stats Item -->
 
             <div class="col-lg-3 col-md-6">
               <div class="stats-item text-center w-100 h-100">
@@ -206,7 +191,6 @@
                 <p>Tình nguyện viên</p>
               </div>
             </div>
-            <!-- End Stats Item -->
 
             <div class="col-lg-3 col-md-6">
               <div class="stats-item text-center w-100 h-100">
@@ -219,8 +203,7 @@
                 <p>Công trình</p>
               </div>
             </div>
-            <!-- End Stats Item -->
-          </div>
+          </div> -->
         </div>
       </section>
       <!-- End Stats Counter Section -->
@@ -285,7 +268,8 @@
                   <p class="ingredients">
                     Vị quen thuộc, ăn mãi không ngán
                   </p>
-                  <p class="price">12k/sản phẩm</p>
+                  <button class="price">12k/sản phẩm</button>
+
                 </div>
                 <!-- Menu Item -->
 
@@ -302,7 +286,8 @@
                   <p class="ingredients">
                     Hương vị mới lạ, kích thích vị giác
                   </p>
-                  <p class="price">12k/sản phẩm</p>
+                  <button class="price">12k/sản phẩm</button>
+
                 </div>
                 <!-- Menu Item -->
 
@@ -319,7 +304,8 @@
                   <p class="ingredients">
                     Giòn tan, hấp dẫn, ăn là mê
                   </p>
-                  <p class="price">10k/sản phẩm</p>
+                  <button class="price">10k/sản phẩm</button>
+
                 </div>
                 <!-- Menu Item -->
 
@@ -334,7 +320,8 @@
                   <p class="ingredients">
                     Giòn rụm, đậm đà khó quên
                   </p>
-                  <p class="price">10k/sản phẩm</p>
+                  <button class="price">10k/sản phẩm</button>
+
                 </div>
                 <!-- Menu Item -->
 
@@ -349,7 +336,8 @@
                   <p class="ingredients">
                     Giải nhiệt, thanh mát, bổ dưỡng
                   </p>
-                  <p class="price">10k/sản phẩm</p>
+                  <button class="price">10k/sản phẩm</button>
+
                 </div>
                 <!-- Menu Item -->
               </div>
@@ -373,7 +361,8 @@
                   <p class="ingredients">
                     <!-- Lorem, deren, trataro, filede, nerada -->
                   </p>
-                  <p class="price">10k/sản phẩm</p>
+                  <button class="price">10k/sản phẩm</button>
+
                 </div>
                 <!-- Menu Item -->
 
@@ -388,7 +377,8 @@
                   <p class="ingredients">
                     <!-- Lorem, deren, trataro, filede, nerada -->
                   </p>
-                  <p class="price">10k/sản phẩm</p>
+                  <button class="price">10k/sản phẩm</button>
+
                 </div>
                 <!-- Menu Item -->
 
@@ -418,7 +408,8 @@
                   <p class="ingredients">
                     <!-- Lorem, deren, trataro, filede, nerada -->
                   </p>
-                  <p class="price">10k/sản phẩm</p>
+                  <button class="price">10k/sản phẩm</button>
+
                 </div>
                 <!-- Menu Item -->
 
@@ -457,7 +448,7 @@
                   <p class="ingredients">
                     <!-- Lorem, deren, trataro, filede, nerada -->
                   </p>
-                  <p class="price">50k/sản phẩm</p>
+                  <button class="price">50k/sản phẩm</button>
                 </div>
                 <!-- Menu Item -->
 
@@ -472,7 +463,7 @@
                   <p class="ingredients">
                     <!-- Lorem, deren, trataro, filede, nerada -->
                   </p>
-                  <p class="price">50k/sản phẩm</p>
+                  <button class="price">50k/sản phẩm</button>
                 </div>
                 <!-- Menu Item -->
 
@@ -487,7 +478,7 @@
                   <p class="ingredients">
                     <!-- Lorem, deren, trataro, filede, nerada -->
                   </p>
-                  <p class="price">50k/sản phẩm</p>
+                  <button class="price">50k/sản phẩm</button>
                 </div>
                 <!-- Menu Item -->
 
@@ -502,7 +493,7 @@
                   <p class="ingredients">
                     <!-- Lorem, deren, trataro, filede, nerada -->
                   </p>
-                  <p class="price">50k/sản phẩm</p>
+                  <button class="price">50k/sản phẩm</button>
                 </div>
                 <!-- Menu Item -->
               </div>
@@ -539,12 +530,9 @@
                 class="swiper-slide event-item d-flex flex-column justify-content-end"
                 style="background-image: url(assets/img/hoatdong1.jpg)"
               >
-                <h3>Private Parties</h3>
-                <div class="price align-self-start">$289</div>
+                <div class="price align-self-start">Viết thăm nghĩa trang liệt sĩ</div>
                 <p class="description">
-                  In delectus sint qui et enim. Et ab repudiandae inventore
-                  quaerat doloribus. Facere nemo vero est ut dolores ea
-                  assumenda et. Delectus saepe accusamus aspernatur.
+                  Cuộc sống mà chúng mình đang có hiện tại là công ơn của biết bao người còn sống hay đã khuất.
                 </p>
               </div>
               <!-- End Event item -->
@@ -553,12 +541,9 @@
                 class="swiper-slide event-item d-flex flex-column justify-content-end"
                 style="background-image: url(assets/img/hoatdong.jpg)"
               >
-                <h3>Birthday Parties</h3>
-                <div class="price align-self-start">$499</div>
+                <div class="price align-self-start">Tu sửa trường học</div>
                 <p class="description">
-                  Laborum aperiam atque omnis minus omnis est qui assumenda
-                  quos. Quis id sit quibusdam. Esse quisquam ducimus officia
-                  ipsum ut quibusdam maxime. Non enim perspiciatis.
+                 Chúng mình cùng nhau thắp sáng hy vọng cho các bạn nhỏ nhé!
                 </p>
               </div>
               <!-- End Event item -->
@@ -579,7 +564,7 @@
   
           <div class="row gy-4">
   
-            <div class="col-lg-4 col-md-6 d-flex align-items-stretch justify-content-center" data-aos="fade-up" data-aos-delay="100">
+            <div class="col-lg-4 col-md-6 d-flex align-items-strech justify-content-center" data-aos="fade-up" data-aos-delay="100">
               <div class="chef-member">
                 <div class="member-img">
                   <img src="./assets/img/image/fund/3.png" class="img-fluid" alt="">
@@ -595,7 +580,7 @@
               </div>
             </div><!-- End Chefs Member -->
   
-            <div class="col-lg-4 col-md-6 d-flex align2-items-stretch" data-aos="fade-up" data-aos-delay="200">
+            <div class="col-lg-4 col-md-6 d-flex align-items-strech justify-content-center" data-aos="fade-up" data-aos-delay="200">
               <div class="chef-member">
                 <div class="member-img">
                   <img src="./assets/img/image/fund/2.png" class="img-fluid" alt="">
@@ -614,7 +599,7 @@
               </div>
             </div><!-- End Chefs Member -->
   
-            <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="300">
+            <div class="col-lg-4 col-md-6 d-flex align-items-strech justify-content-center" data-aos="fade-up" data-aos-delay="300">
               <div class="chef-member">
                 <div class="member-img">
                   <img src="./assets/img/image/fund/1.png" class="img-fluid" alt="">
@@ -638,20 +623,22 @@
       <!-- End Chefs Section -->
 
       <!-- ======= Book A Table Section ======= -->
-      <section id="book-a-table" class="book-a-table">
+      <!-- <section id="book-a-table" class="book-a-table">
         <div class="container" data-aos="fade-up">
           <div class="section-header">
-            <h2>Book A Table</h2>
-            <p>Book <span>Your Stay</span> With Us</p>
+            <h2>Đặt hàng ngay</h2>
+
+          
+            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScP-V_y2JqwgZNbUEtRXU8pfZWJdcEh8mpLcpG5I7MKdNTW5g/viewform?pli=1" frameborder="0"></iframe>
           </div>
 
         </div>
-      </section>
+      </section> -->
       <!-- End Book A Table Section -->
 
   
     <!-- ======= Gallery Section ======= -->
-    <section id="gallery" class="gallery section-bg">
+    <!-- <section id="gallery" class="gallery section-bg">
       <div class="container" data-aos="fade-up">
 
         <div class="section-header">
@@ -674,7 +661,7 @@
         </div>
 
       </div>
-    </section>
+    </section> -->
       <!-- End Gallery Section -->
 
       <!-- ======= Contact Section ======= -->
@@ -692,19 +679,19 @@
               <div class="info-item d-flex align-items-center">
                 <i class="icon bi bi-map flex-shrink-0"></i>
                 <div>
-                  <h3>Our Address</h3>
-                  <p>A108 Adam Street, New York, NY 535022</p>
+                  <h3>Địa chỉ</h3>
+                  <p>Trung tâm Tin học HCMUTE tại Số 1 Võ Văn Ngân, P. Linh Chiểu, Q. Thủ Đức - Hotline: 0908 277 911</p>
                 </div>
               </div>
             </div>
             <!-- End Info Item -->
 
             <div class="col-md-6">
-              <div class="info-item d-flex align-items-center">
-                <i class="icon bi bi-envelope flex-shrink-0"></i>
+              <div  target="https://fit.hcmute.edu.vn" class="info-item d-flex align-items-center">
+                <i class="icon bi bi-box-arrow-up-right flex-shrink-0"></i>
                 <div>
-                  <h3>Email Us</h3>
-                  <p>contact@example.com</p>
+                  <h3>Website Khoa CNTT</h3>
+                  <p>https://fit.hcmute.edu.vn</p>
                 </div>
               </div>
             </div>
@@ -725,10 +712,9 @@
               <div class="info-item d-flex align-items-center">
                 <i class="icon bi bi-share flex-shrink-0"></i>
                 <div>
-                  <h3>Opening Hours</h3>
+                  <h3>Giờ làm việc</h3>
                   <div>
-                    <strong>Mon-Sat:</strong> 11AM - 23PM;
-                    <strong>Sunday:</strong> Closed
+                    <strong>Thứ hai - Thứ 7:</strong> 7h00 - 17h00
                   </div>
                 </div>
               </div>
