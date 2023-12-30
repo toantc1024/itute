@@ -39,24 +39,6 @@ var lastPath = false;
 
 var storage = window.localStorage;
 
-class Storage {
-  constructor() { 
-    this.data = [];
-    // Is there a way to connect directly to database and ... sync it to cloud??
-    // Let figure it out
-  }
-
-  getItem() {
-    
-  }
-
-  setItem(item) {
-
-  }
-}
-
-let storage_obj = new Storage();
-
 
 
 var clickOrTap = ((window.document.documentElement.ontouchstart!==null)?'click':'touchstart');
