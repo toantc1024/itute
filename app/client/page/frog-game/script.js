@@ -58,6 +58,7 @@ class CloudStorage {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
       },
     })
       .then((response) => {
@@ -78,6 +79,8 @@ class CloudStorage {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+
       },
       body: JSON.stringify({ key: key, value: value }),
     })
@@ -127,6 +130,7 @@ loginForm.onsubmit = function (e) {
     fetch(`${host}/api/login`, {
       method: 'POST',
       headers: {
+        "Access-Control-Allow-Origin": "*",
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({ username: username, userzalo: userzalo }),
