@@ -1142,3 +1142,85 @@ body.dark {
     transform: translateY(0);
   }
 }
+
+
+/* Modal */
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 999; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  border-radius: 10px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+#modal_login {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+#modal_login div {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+}
+
+#modal_login div input {
+  display: flex;
+}
+
+.play_btn:hover {
+  cursor:pointer;
+  background-color: #7f9761;
+}
+
+.is-hidden {
+  display: none!important;
+}
+
+.hello {
+  display: block;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+  padding: 25px;
+}

@@ -1,33 +1,33 @@
 // Please excuse the mess, I need to do some tidying
 
-var activeScreen = document.querySelector('.screen.is-active');
-var menuScreen = document.querySelector('.screen.menu');
-var gameScreen = document.querySelector('.screen.game');
-var winScreen = document.querySelector('.screen.win');
-var settingsScreen = document.querySelector('.screen.settings');
-var scoreboardScreen = document.querySelector('.screen.scoreboard');
-var scoreBoard = document.querySelector('.js-scoreboard');
+var activeScreen = document.querySelector(".screen.is-active");
+var menuScreen = document.querySelector(".screen.menu");
+var gameScreen = document.querySelector(".screen.game");
+var winScreen = document.querySelector(".screen.win");
+var settingsScreen = document.querySelector(".screen.settings");
+var scoreboardScreen = document.querySelector(".screen.scoreboard");
+var scoreBoard = document.querySelector(".js-scoreboard");
 
-var player = document.querySelector('.player');
-var tongue = document.querySelector('.tongue');
-var eyes = document.querySelectorAll('.eye');
-var pupils = document.querySelectorAll('.pupil');
-var deadFly = document.querySelector('.tongue .fly');
+var player = document.querySelector(".player");
+var tongue = document.querySelector(".tongue");
+var eyes = document.querySelectorAll(".eye");
+var pupils = document.querySelectorAll(".pupil");
+var deadFly = document.querySelector(".tongue .fly");
 
-var paths = document.querySelectorAll('.path');
-var targets = document.querySelectorAll('.target');
+var paths = document.querySelectorAll(".path");
+var targets = document.querySelectorAll(".target");
 
-var scoreEls = document.querySelectorAll('.js-score');
-var bestEls = document.querySelectorAll('.js-best');
-var timerEl = document.querySelector('.js-time');
-var highscoreEl = document.querySelector('.js-highscore');
+var scoreEls = document.querySelectorAll(".js-score");
+var bestEls = document.querySelectorAll(".js-best");
+var timerEl = document.querySelector(".js-time");
+var highscoreEl = document.querySelector(".js-highscore");
 var timerIntervalId;
 
 // Audio
 var musicPlaying = false;
-var musicButton = document.querySelector('.js-toggle-music')
-var music = document.querySelector('#music');
-
+var musicButton = document.querySelector(".js-toggle-music");
+var music = document.querySelector("#music");
+var loginForm = document.getElementById("modal_login");
 var state = {};
 var hidden = [];
 var theme;
@@ -36,13 +36,123 @@ var shooting = false;
 var playing = false;
 var transitioning = false;
 var lastPath = false;
+var modal = document.getElementById("myModal");
+// var span = document.getElementsByClassName("close")[0];
 
-var storage = window.localStorage;
+const openLoginModal = () => {
+  modal.style.display = "block";
+};
+
+const closeLoginModal = () => {
+  modal.style.display = "none";
+};
+
+var host = "http://localhost:5000";
+class CloudStorage {
+  constructor() {
+    this.host = host;
+  }
+
+  getItem(key) {
+    fetch(`${this.host}/api/getItem?key=${key}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => {
+        // if (!response.ok) {
+        // throw new Error(`HTTP error! status: ${response.status}`);
+        // }
+        return response.json();
+      })
+      .then((data) => {
+        console.log("Success:", data);
+        return data;
+      })
+      .catch((error) => {});
+  }
+
+  setItem(key, value) {
+    fetch(`${this.host}/api/setItem`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ key: key, value: value }),
+    })
+      .then((response) => {
+        // if (!response.ok) {
+        // throw new Error(`HTTP error! status: ${response.status}`);
+        // }
+        return response.json();
+      })
+      .then((data) => {
+        console.log("Success:", data);
+        return data;
+      })
+      .catch((error) => {});
+  }
+}
+
+var localStorage = window.localStorage;
+var cloudStorage = new CloudStorage();
+
+var clickOrTap =
+  window.document.documentElement.ontouchstart !== null
+    ? "click"
+    : "touchstart";
 
 
+const loginModalShowError = (message) => {
+  const errorEl = document.getElementById("login-error");
+  errorEl.textContent = message;
+  // Set time out for 1000 to hide error
+  errorEl.classList.remove("is-hidden");
+  setTimeout(() => {
+    errorEl.classList.add("is-hidden");
+  }, 2000);
+};
 
-var clickOrTap = ((window.document.documentElement.ontouchstart!==null)?'click':'touchstart');
+    
+loginForm.onsubmit = function (e) {
+  e.preventDefault();
+  // extract username and userzalo from e form event
+     // extract username and userzalo from the form event
+  let username = e.target.elements['username'].value;
+  let userzalo = e.target.elements['userzalo'].value;
 
+
+  if (username && userzalo) {
+    fetch(`${host}/api/login`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ username: username, userzalo: userzalo }),
+    })
+    .then(response => {
+      // if (!response.ok) {
+        // throw new Error(`HTTP error! status: ${response.status}`);
+      // }
+      return response.json();
+    })
+    .then(data => {
+      console.log('Success:', data);
+      localStorage.setItem("user_name", data.username);
+      localStorage.setItem("user_zalo", data.userzalo);
+      document.getElementById("user_name").textContent = data.username;
+      alert(data.username);
+      closeLoginModal();
+    })
+    .catch((error) => {
+    });
+  };
+
+
+}
+
+authentication();
 init();
 
 function init() {
@@ -53,59 +163,69 @@ function init() {
 }
 function prepPaths() {
   for (var i = 0; i < paths.length; i++) {
-    paths[i].setAttribute('data-id', i);
+    paths[i].setAttribute("data-id", i);
   }
 }
-function loadStorage() {
-  theme = storage.getItem('theme');
-  
-  if (!theme) {
-    theme = 'light';
+
+function authentication() {
+  let user_id = localStorage.getItem("user_name");
+  if (!user_id || user_id == "undefined" || user_id == "null") {
+    openLoginModal();
+  } else {
+    document.getElementById("user_name").textContent = user_id;
   }
-  
-  scores = storage.getItem('scores');
-  
+}
+
+function loadStorage() {
+
+
+  theme = localStorage.getItem("theme");
+
+  if (!theme) {
+    theme = "light";
+  }
+
+  scores = localStorage.getItem("scores");
+
   if (!scores) {
     scores = [];
   } else {
     scores = JSON.parse(scores);
   }
-  
+
   toggleTheme(theme);
   renderScoreBoard();
 }
 
 function renderScoreBoard() {
-  var html = '';
-  
+  var html = "";
+
   for (var i = 0; i < 10; i++) {
     html += "<li>";
-    html += scores[i] || '-';
+    html += scores[i] || "-";
     html += "</li>";
   }
-  
+
   scoreBoard.innerHTML = html;
-  
 }
 
 function setState() {
   state = {
     time: 30,
-    score: 0
-  }
+    score: 0,
+  };
 }
 
 function toggleMusic() {
   musicPlaying = !musicPlaying;
   if (musicPlaying) {
-    music.play();  
+    music.play();
     musicButton.textContent = "Dừng nhạc";
   } else {
     music.pause();
     music.currentTime = 0;
     musicButton.textContent = "Chơi nhạc";
   }
-  
 }
 
 function play() {
@@ -124,7 +244,7 @@ function win() {
   playing = false;
   var prevBest = scores[0] || 0;
   scores.push(state.score);
-  scores.sort(function(a,b) {
+  scores.sort(function (a, b) {
     return b - a;
   });
   if (scores.length > 10) {
@@ -134,9 +254,9 @@ function win() {
   var best = scores[0] || 0;
   if (state.score > prevBest) {
     best = state.score;
-    highscoreEl.classList.remove('is-hidden');
+    highscoreEl.classList.remove("is-hidden");
   } else {
-    highscoreEl.classList.add('is-hidden');
+    highscoreEl.classList.add("is-hidden");
   }
   renderBest(best);
   renderScoreBoard();
@@ -150,7 +270,7 @@ function renderBest() {
 }
 
 function saveScores() {
-  storage.setItem('scores', JSON.stringify(scores));
+  localStorage.setItem("scores", JSON.stringify(scores));
 }
 
 function menu() {
@@ -168,11 +288,11 @@ function scoreboard() {
 function startTimer() {
   // Set the time before starting timer
   timerEl.textContent = state.time;
-  
-  timerIntervalId = setInterval(function(e) {
+
+  timerIntervalId = setInterval(function (e) {
     state.time -= 1;
     timerEl.textContent = state.time;
-    
+
     if (state.time <= 0) {
       clearInterval(timerIntervalId);
       win();
@@ -182,7 +302,7 @@ function startTimer() {
 
 function score(value) {
   state.score += value || 1;
-  
+
   renderScore();
 }
 function renderScore() {
@@ -193,10 +313,10 @@ function renderScore() {
 
 function toggleScreen(screen) {
   if (activeScreen) {
-    activeScreen.classList.remove('is-active');
+    activeScreen.classList.remove("is-active");
   }
-  
-  screen.classList.add('is-active');
+
+  screen.classList.add("is-active");
   activeScreen = screen;
 }
 
@@ -204,12 +324,9 @@ function toggleTheme(value) {
   document.body.classList.remove(theme);
   document.body.classList.add(value);
   theme = value;
-  
-  storage.setItem('theme', value);
+
+  localStorage.setItem("theme", value);
 }
-
-
-
 
 // Game Logic
 // Events
@@ -222,15 +339,15 @@ for (var i = 0; i < targets.length; i++) {
 function shoot(e) {
   eyesFollow(e);
   // deadFly.classList.remove('is-active');
-  
-  player.classList.remove('is-active');
+
+  player.classList.remove("is-active");
   tongue.style.height = 0 + "px";
   tongue.style.transform = "rotate(" + 0 + "deg)";
 
-  var tongueX = tongue.getBoundingClientRect().left  + (tongue.offsetWidth);
+  var tongueX = tongue.getBoundingClientRect().left + tongue.offsetWidth;
   var tongueY = tongue.getBoundingClientRect().bottom;
   var touch = getTouch(e);
-  var clickX = touch.x + (tongue.offsetWidth / 2);
+  var clickX = touch.x + tongue.offsetWidth / 2;
   var clickY = touch.y;
 
   shooting = true;
@@ -240,49 +357,49 @@ function shoot(e) {
   var height = getHeight(tongueX, tongueY, clickX, clickY);
 
   if (angle > 0 && angle < 180) {
-    player.classList.add('is-shooting-down');
+    player.classList.add("is-shooting-down");
   } else {
-    player.classList.remove('is-shooting-down');
+    player.classList.remove("is-shooting-down");
   }
 
-  player.classList.add('is-active');
+  player.classList.add("is-active");
   tongue.style.height = height + "px";
-  tongue.style.transform = "rotate(" + (angle + 90)  + "deg)"; 
+  tongue.style.transform = "rotate(" + (angle + 90) + "deg)";
 }
 function hit(e) {
   var path = this.parentNode;
-  var id = path.getAttribute('data-id');
-  
+  var id = path.getAttribute("data-id");
+
   if (!e.isTrusted || hidden.includes(id)) {
     return;
   }
   if (state.score % 2 == 0) {
-    deadFly.classList.add('is-active2');
-    deadFly.classList.remove('is-active');
+    deadFly.classList.add("is-active2");
+    deadFly.classList.remove("is-active");
   } else {
-    deadFly.classList.add('is-active');
-    deadFly.classList.remove('is-active2');
+    deadFly.classList.add("is-active");
+    deadFly.classList.remove("is-active2");
   }
-  path.classList.remove('is-active');
-  path.classList.add('is-hidden');
-  hidden.push(id); 
-  
+  path.classList.remove("is-active");
+  path.classList.add("is-hidden");
+  hidden.push(id);
+
   // Show dead fly on tongue
   //deadFly.classList.add('is-active');
   // console.log('show dead fly');
-  
-  setTimeout(function() {
+
+  setTimeout(function () {
     var id = hidden.shift();
-    paths[id].classList.remove('is-hidden');
+    paths[id].classList.remove("is-hidden");
   }, 1000);
-  
+
   score();
 }
 
 function eyesFollow(e) {
   var touch = getTouch(e);
-  moveEye({x: touch.x, y: touch.y}, eyes[0], pupils[0]);
-  moveEye({x: touch.x, y: touch.y}, eyes[1], pupils[1]);
+  moveEye({ x: touch.x, y: touch.y }, eyes[0], pupils[0]);
+  moveEye({ x: touch.x, y: touch.y }, eyes[1], pupils[1]);
 }
 
 function moveEye(mouse, eye, pupil) {
@@ -294,7 +411,10 @@ function moveEye(mouse, eye, pupil) {
   var leftOffset = eye.getBoundingClientRect().left;
   var topOffset = eye.getBoundingClientRect().top;
 
-  var center = [eye.getBoundingClientRect().left + eyeRadius, eye.getBoundingClientRect().top + eyeRadius];
+  var center = [
+    eye.getBoundingClientRect().left + eyeRadius,
+    eye.getBoundingClientRect().top + eyeRadius,
+  ];
 
   var dist = getDistance([mouse.x, mouse.y], center);
 
@@ -305,10 +425,10 @@ function moveEye(mouse, eye, pupil) {
     var x = mouse.x - center[0];
     var y = mouse.y - center[1];
     var radians = Math.atan2(y, x);
-    left = (Math.cos(radians) * (eyeRadius - pupilRadius));
-    top = (Math.sin(radians) * (eyeRadius - pupilRadius));
+    left = Math.cos(radians) * (eyeRadius - pupilRadius);
+    top = Math.sin(radians) * (eyeRadius - pupilRadius);
   }
-  
+
   // if (top > 0) {
   //   eye.classList.add('down');
   //   eye.classList.remove('up');
@@ -322,10 +442,10 @@ function moveEye(mouse, eye, pupil) {
   pupil.style.transform = "translate(" + left + "px, " + top + "px)";
 }
 
-function getRandomPath(lanes) { 
+function getRandomPath(lanes) {
   const idx = Math.floor(Math.random() * paths.length);
   const path = paths[idx];
-  if (path === lastPath || paths[idx].classList.contains('is-hidden')) {
+  if (path === lastPath || paths[idx].classList.contains("is-hidden")) {
     // console.log('Ah nah thats the same one bud');
     return getRandomPath(paths);
   }
@@ -336,9 +456,9 @@ function getRandomPath(lanes) {
 function peep() {
   const time = getRandomTime(600, 1200);
   const path = getRandomPath(paths);
-  path.classList.add('is-active');
-  setTimeout(function() {
-    path.classList.remove('is-active');
+  path.classList.add("is-active");
+  setTimeout(function () {
+    path.classList.remove("is-active");
     if (playing) {
       peep();
     }
@@ -352,18 +472,18 @@ function getRandomTime(min, max) {
 
 function getDistance(dot1, dot2) {
   var x1 = dot1[0],
-      y1 = dot1[1],
-      x2 = dot2[0],
-      y2 = dot2[1];
-    
+    y1 = dot1[1],
+    x2 = dot2[0],
+    y2 = dot2[1];
+
   return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
 }
 
 function getAngle(cx, cy, ex, ey) {
   var dy = ey - cy;
   var dx = ex - cx;
-  var theta = (Math.atan2(dy, dx)) * 180 / Math.PI;
-  
+  var theta = (Math.atan2(dy, dx) * 180) / Math.PI;
+
   return theta;
 }
 
@@ -371,19 +491,19 @@ function getHeight(x1, y1, x2, y2) {
   var a = x1 - x2;
   var b = y1 - y2;
 
-  return Math.sqrt( a*a + b*b );
+  return Math.sqrt(a * a + b * b);
 }
 
 function getTouch(e) {
   if (e.touches) {
     return {
       x: e.touches[0].clientX,
-      y: e.touches[0].clientY
-    }
+      y: e.touches[0].clientY,
+    };
   } else {
     return {
       x: e.clientX,
-      y: e.clientY
-    }
+      y: e.clientY,
+    };
   }
 }
