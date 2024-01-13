@@ -42,7 +42,7 @@ def login():
     login_user(username, userzalo)
     response = flask.jsonify({ 'username': username, 'userzalo':userzalo})
     response.headers.add('Access-Control-Allow-Origin', '*')
-    return response, 200
+    return response
 
 @app.route('/api/setItem', methods=['POST'])
 def setItem():
