@@ -7,8 +7,6 @@ app = Flask(__name__)
 cred = credentials.Certificate('cert.json')
 
 CORS(app)
-app.config['CORS_HEADERS'] = 'Content-Type'
-
 
 firebase_admin.initialize_app(cred)
 db = firestore.client()
@@ -37,7 +35,6 @@ def home():
 
 
 @app.route('/api/login', methods=['POST'])
-@cross_origin()
 def login():
     data = request.get_json()
     username = data.get('username')
@@ -47,7 +44,6 @@ def login():
     return { 'username': username, 'userzalo':userzalo}, 200
 
 @app.route('/api/setItem', methods=['POST'])
-@cross_origin()
 def setItem():
     data = request.get_json()
     # Parse "key" and "value" from data
