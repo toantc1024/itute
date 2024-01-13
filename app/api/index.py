@@ -4,10 +4,9 @@ from firebase_admin import credentials, firestore
 from flask_cors import CORS, cross_origin
 # Application Default credentials are automatically created.
 app = Flask(__name__)
-cred = credentials.Certificate('cert.json')
-
 CORS(app)
 
+cred = credentials.Certificate('cert.json')
 firebase_admin.initialize_app(cred)
 db = firestore.client()
 
@@ -41,7 +40,9 @@ def login():
     userzalo = data.get('userzalo')
     # process the data
     login_user(username, userzalo)
-    return { 'username': username, 'userzalo':userzalo}, 200
+    response = flask.jsonify({ 'username': username, 'userzalo':userzalo})
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    return response, 200
 
 @app.route('/api/setItem', methods=['POST'])
 def setItem():
