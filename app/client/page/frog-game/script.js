@@ -155,7 +155,6 @@ loginForm.onsubmit = function (e) {
 
 }
 
-authentication();
 init();
 
 function init() {
