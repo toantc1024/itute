@@ -6,7 +6,7 @@ from flask_cors import CORS
 app = Flask(__name__)
 cred = credentials.Certificate('cert.json')
 
-CORS(app, resources={r"/api/*": {"origins": "*"}})
+CORS(app, resources={r"/api/*": {"origins": "https://itute.vercel.app"}})
 
 
 firebase_admin.initialize_app(cred)
