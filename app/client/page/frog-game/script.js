@@ -47,7 +47,7 @@ const closeLoginModal = () => {
   modal.style.display = "none";
 };
 
-var host = "http://localhost:5000";
+var host = "https://itute-backend.vercel.app";
 class CloudStorage {
   constructor() {
     this.host = host;
