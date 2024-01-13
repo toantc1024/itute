@@ -1,12 +1,13 @@
 from flask import Flask, request
 import firebase_admin
 from firebase_admin import credentials, firestore
-from flask_cors import CORS
+from flask_cors import CORS, cross_origin
 # Application Default credentials are automatically created.
 app = Flask(__name__)
 cred = credentials.Certificate('cert.json')
 
-CORS(app, resources={r"/api/*": {"origins": "https://itute.vercel.app"}})
+CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
 
 
 firebase_admin.initialize_app(cred)
@@ -36,6 +37,7 @@ def home():
 
 
 @app.route('/api/login', methods=['POST'])
+@cross_origin()
 def login():
     data = request.get_json()
     username = data.get('username')
@@ -45,6 +47,7 @@ def login():
     return { 'username': username, 'userzalo':userzalo}, 200
 
 @app.route('/api/setItem', methods=['POST'])
+@cross_origin()
 def setItem():
     data = request.get_json()
     # Parse "key" and "value" from data

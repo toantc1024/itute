@@ -152,7 +152,7 @@ loginForm.onsubmit = function (e) {
 
 }
 
-// authentication();
+authentication();
 init();
 
 function init() {
